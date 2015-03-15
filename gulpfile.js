@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var connect = require('gulp-connect');
 
 var gulpif = require('gulp-if'),
-    clean = require('gulp-clean');
+    dirSync = require('gulp-directory-sync');
 
 var sprite = require('css-sprite').stream;
 
@@ -18,15 +18,10 @@ var path = {
 };
 
 gulp.task('copy', function(){
-  gulp.src('src/js/**/*')
-    .pipe(clean({force: true}))
-    .pipe(gulp.dest('dest/js'));
-  gulp.src('src/fonts/**/*')
-    .pipe(clean({force: true}))
-    .pipe(gulp.dest('dest/fonts'));
-  gulp.src('src/img/**/*')
-    .pipe(clean({force: true}))
-    .pipe(gulp.dest('dest/img'));
+  gulp.src('')
+     .pipe(dirSync( 'src/js', 'dest/js', { printSummary: true } ))
+     .pipe(dirSync( 'src/fonts', 'dest/fonts', { printSummary: true } ))
+     .pipe(dirSync( 'src/img', 'dest/img', { printSummary: true } ))
 });
 
 gulp.task('jade', function(){
