@@ -1,0 +1,76 @@
+/* ==========================================================================
+   forms
+   ========================================================================== */
+
+.search
+	position relative
+	float right
+	margin-top -10px
+	
+	&__input
+		width 190px
+		border 0
+		height 30px  
+		margin-right 20px
+	
+	&__submit
+		display block
+		width 30px
+		height 30px
+		position absolute
+		top 0
+		right 0
+		background-color $c-main
+		border 0  
+		cursor pointer
+		transition all 0.3s
+		&:hover
+			background-color $c-sec 
+		
+	 
+.captcha
+	col(5/12)
+	
+.captcha_input
+	col(7/12)
+	
+.required_txt
+	font-size 12px
+	margin-top 10px
+
+.captcha__img
+	margin-bottom 10px
+	
+.captcha__reset
+	display block
+	color $c-main
+	&:hover
+		color $c-text
+		
+
+.pse-placeholder
+	position absolute
+	top 0
+	left 10px
+	line-height 40px
+
+	
+	
+/*Modal msg*/
+.modal-msg
+	display none
+	text-align center
+	.btn_wrap
+		margin-bottom 0
+
+	&__title
+		font-size 18px
+		margin 10px 0
+
+	&_link
+		text-transform uppercase
+		color $c-main
+		
+	&:hover
+		text-decoration underline 
+

@@ -1,0 +1,19 @@
+// MENU? _______________________________________________
+//- mixin item(title)
+//-   li(class=active == title ? 'active' : '')
+//-     a(href="#")= title
+mixin item(title, sub)
+  if (title == active || title == active2 || title == active3)
+      li&attributes(attributes).menu_item.active
+        a(href="#").menu_link= title
+        if (sub == 1)
+          ul.sub_menu
+            block
+
+
+  else
+    li&attributes(attributes).menu_item
+      a(href="#").menu_link= title
+      if (sub == 1)
+        ul.sub_menu
+          block
