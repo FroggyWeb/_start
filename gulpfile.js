@@ -63,7 +63,7 @@ gulp.task('imagemin', function(){
 gulp.task('sprites', function () {
   gulp.src('./src/img/png-sprite/*.png')
     .pipe(sprite({
-      name: 'sprite',
+      name: 'pngsprite',
       style: '_sprite.styl',
       cssPath: '../img/',
       processor: 'stylus',
