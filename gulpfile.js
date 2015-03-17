@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var connect = require('gulp-connect');
 
 var gulpif = require('gulp-if'),
-    dirSync = require('gulp-directory-sync');
+    dirSync = require('gulp-dir-sync');
 
 var sprite = require('css-sprite').stream;
 
@@ -17,18 +17,20 @@ var path = {
   src: ['src/js/**/*', 'src/fonts/**/*', 'src/img/**/*']
 };
 
+var opts = {};
+opts.filter = '^((?!\.db).)*$';
+
 gulp.task('copy', function(){
-  gulp.src('')
-     .pipe(dirSync( 'src/js', 'dest/js', { printSummary: true } ))
-     .pipe(dirSync( 'src/fonts', 'dest/fonts', { printSummary: true } ))
-     .pipe(dirSync( 'src/img', 'dest/img', { printSummary: true } ))
+     dirSync( 'src/js', 'dest/js' );
+     dirSync( 'src/fonts', 'dest/fonts' );
+     dirSync( 'src/img', 'dest/img', opts );
 });
 
 gulp.task('jade', function(){
   gulp.src(path.jade)
   .pipe(accord('jade', { pretty: true }))
   .on('error', function (error) {
-    console.log('error!!!!!');
+    console.error('error!!!!!' + error);
   })
   .pipe(gulp.dest('dest'))
   .pipe(connect.reload());
@@ -39,7 +41,7 @@ gulp.task('stylus', function(){
   .pipe(sourcemaps.init())
   .pipe(accord('stylus'))
   .on('error', function (error) {
-    console.log('error!!!!!');
+    console.error('error!!!!!' + error);
   })
   .pipe(autoprefixer())
   .pipe(sourcemaps.write('.'))
@@ -62,7 +64,9 @@ gulp.task('sprites', function () {
       style: '_sprite.styl',
       cssPath: '../img/',
       processor: 'stylus',
+      template: 'stylus.template.mustache',
       margin: 4,
+      retina: true,
       orientation: 'binary-tree',
     }))
     .pipe(gulpif('*.png', gulp.dest('./src/img/'), gulp.dest('./src/css/')))
