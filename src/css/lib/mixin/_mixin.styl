@@ -120,9 +120,9 @@ placeholder(color = #ccc)
 /*Font___________________________________________*/
 // Fonts mixin
 font-url(file)
-  return '../font/' + file
+  return '../fonts/' + file
  
-webfont(family, file, weight = 'normal', style="normal")
+webfont(family, file, weight = normal, style= normal)
   @font-face
     font-family family
     src url(font-url(file + '.eot'))

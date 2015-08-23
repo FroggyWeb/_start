@@ -7,13 +7,11 @@ mixin item(title, sub)
       li&attributes(attributes).menu_item.active
         a(href="#").menu_link= title
         if (sub == 1)
-          ul.sub_menu
-            block
+          block
 
 
   else
     li&attributes(attributes).menu_item
       a(href="#").menu_link= title
       if (sub == 1)
-        ul.sub_menu
-          block
+        block
